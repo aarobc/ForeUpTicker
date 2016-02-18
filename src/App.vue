@@ -1,13 +1,15 @@
 <template>
   <div id="app">
-    <h3>Stock Watcher</h3>
+    <h1>Stock Watcher</h1>
     <div class="search">
-      <form v-on:submit.prevent="searchStock">
+      <form v-on:submit.prevent="searchStock" >
         <input type='text' v-model="query"
+        placeholder="Enter stock symbol..."
         ></input>
         <input type='button' value='ADD' v-on:click="searchStock"></input>
       </form>
     </div>
+    <div style="clear:both"></div>
     <div class='stocks'>
         <stock-item class="stock" v-for="stock in stocks" :stock="stock"></stock-item>
     </div>
@@ -58,13 +60,18 @@ body {
 }
 
 #app{
-  /* margin: 0 auto; */
-  /* text-align:center; */
-  width:100%;
+  margin: 0 auto;
+  padding-top:15px;
+  max-width:800px;
+}
+
+#app>h1{
+  text-align:center;
 }
 
 .stocks{
   width: 100%;
+  overflow: auto;
 }
 
 .stock{
@@ -74,9 +81,12 @@ body {
   padding:1em;
   margin: 1em;
   float:left;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
 }
 
 form{
+  margin: 0 auto;
   width:18em;
   height:2em;
   position:relative;
@@ -85,7 +95,6 @@ form{
 input[type='text']{
   height:100%;
   float:left;
-  /* position:absolute; */
 }
 input[type='button']{
   box-shadow: rgb(154, 204, 133) 0px 1px 0px 0px inset;
