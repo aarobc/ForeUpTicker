@@ -66,11 +66,8 @@ export default {
     }
   },
   computed: {
-    rising () {
-      return this.stock.Change.indexOf('+') > -1
-    },
     cClass () {
-      return this.rising ? 'rising' : 'falling'
+      return this.rising() ? 'rising' : 'falling'
     },
     pct () {
       return parseFloat(this.stock.Change) / this.stock.DaysLow * 100
@@ -86,6 +83,11 @@ export default {
       // offset because weird css
       pct -= 4
       return {bottom: `${pct}%`}
+    }
+  },
+  methods: {
+    rising () {
+      return this.stock.Change.indexOf('+') > -1
     }
   }
 }

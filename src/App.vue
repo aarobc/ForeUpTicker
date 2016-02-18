@@ -49,6 +49,9 @@ export default {
     },
     rm (stock) {
       console.log(stock)
+    },
+    validate () {
+
     }
   }
 }
